@@ -1,16 +1,21 @@
 return {
   "goolord/alpha-nvim",
-  opts = function(_, opts)
+  -- dependencies = { 'echasnovski/mini.icons' },
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  config = function()
+    require("alpha").setup(require("alpha.themes.dashboard").config)
     local logo = [[
-	  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-	  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-	  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-	  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-	  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-	  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+      ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+      ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+      ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+      ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+      ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+      ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 
-	                   [ @syednabilashraf ]
+                    [ @syednabilashraf ]
     ]]
-    opts.section.header.val = vim.split(logo, "\n", { trimempty = true })
+    local dashboard = require("alpha.themes.dashboard")
+    dashboard.section.header.val = logo
+    require("alpha").setup(dashboard.config)
   end,
 }
